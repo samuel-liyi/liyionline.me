@@ -1,7 +1,9 @@
 # Site settings
 title: Li Yi's Person World
 email: liyisepku@gmail.com
-description: > this is my personal site
+description: > # this means to ignore newlines until "baseurl:"
+  This is my personal website, where I put all things related to my work,
+  study and personal life
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://liyionline.me" # the base hostname & protocol for your site
 twitter_username: samuelliyi
