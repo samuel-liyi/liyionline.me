@@ -8,6 +8,12 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://liyionline.me" # the base hostname & protocol for your site
 twitter_username: samuelliyi
 github_username:  samuel-liyi
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "post"
 
 # Build settings
 markdown: kramdown
