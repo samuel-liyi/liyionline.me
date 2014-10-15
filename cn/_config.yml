@@ -4,9 +4,9 @@ email: liyi@liyionline.me
 description: > # this means to ignore newlines until "baseurl:"
   This is my personal website, where I put all things related to my work,
   study and personal life
-baseurl: "" # the subpath of your site, e.g. /blog/
-#url: "http://liyionline.me" # the base hostname & protocol for your site
-twitter_username: liyi-samuel
+baseurl: "/cn/" # the subpath of your site, e.g. /blog/
+#url: "http://liyionline.me/cn" # the base hostname & protocol for your site
+twitter_username: samuelliyi
 github_username:  samuel-liyi
 defaults:
   -
@@ -17,5 +17,6 @@ defaults:
 
 # Build settings
 markdown: kramdown
+destination:
 # Outputting
-permalink: /:categories/:year/:month/:day/:title.html
+permalink: /cn/:year/:month/:day/:title.html
