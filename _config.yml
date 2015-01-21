@@ -16,6 +16,8 @@ defaults:
       layout: "post"
 
 # Build settings
-markdown: kramdown
+#markdown: kramdown
+markdown: rdiscount
 # Outputting
 permalink: /:categories/:year/:month/:day/:title.html
+

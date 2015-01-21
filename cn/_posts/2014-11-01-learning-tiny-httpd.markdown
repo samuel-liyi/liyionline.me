@@ -26,6 +26,7 @@ tags: [C++,服务器，Linux]
 	void serve_file(int, const char *);
 	int startup(u_short *);
 	void unimplemented(int);
+
 可以看到其中两个函数*execute_cgi*和*serve_file*分别对应静态文件和动态文件处理，[CGI](http://en.wikipedia.org/wiki/Common_Gateway_Interface)当然就是用来动态生成内容的脚本，静态文件就是各种文本（html).
 
 下面逐个看一下各个函数的实现：
@@ -37,24 +38,28 @@ tags: [C++,服务器，Linux]
 	{
 	 ...
 	}
+
 处理方式就是从sock中往buf里面读size个字符，需要注意的就是当遇到*\r,\n,\r\n*的时候全部统一成*\r\n*,并且不再往后读入，返回已读字符的个数。
 	
 	void cat(int client, FILE *resource)
 	{
 	...
 	}
+
 和linux下熟悉的命令一样，读取一个文件，并且用send函数发送给客户端
 
 	void headers(int client, const char *filename)
 	{
 	...
 	}
+
 这里就是生成返回的header,只有最简单的Content-type和http 200
 
 	void serve_file(int client, const char *filename)
 	{
 	...
 	}
+
 这里就是用到了*cat*,*headers*两个函数，这里注意的是socket queue里面需要把client发送的header读到一个buffer然后丢掉这些数据，然后才能通过socket返回文件的内容。判断的方法就是header最后跟着一个空行.
 
 *not_found()* *unimplemented()*  *cannot_execute()* *bad_request()* 这几个函数就是直接返回固定的内容，直接返回html，分别对应当文件不存在，请求不支持和脚本无法执行的情形。
@@ -64,6 +69,7 @@ tags: [C++,服务器，Linux]
 	 perror(sc);
 	 exit(1);
 	}
+
 *error_die* 函数用perror函数打印错误信息
 
 剩下就是两个核心的函数：*accept_request*和 *execute_cgi*
@@ -72,6 +78,7 @@ tags: [C++,服务器，Linux]
 	{
 	 ...
 	}
+	
 accept_request解析header里面的第一行获得request method(get/post)和请求路径，映射到htdoc文件夹下的路径，其中当对应的文件可执行的时候，就调用execute_cgi函数
 
 execute_cgi函数主要是执行服务器端脚本这段程序需要重点关注,CGI需要fork一个新的进程来执行CGI脚本，父子进程间利用管道进行通信，这个我之前也不太懂,不过读了[这个例子](http://stackoverflow.com/a/2784559)之后我大概明白原理，细节还需要再学习。

@@ -17,6 +17,7 @@ defaults:
 
 # Build settings
 markdown: kramdown
+#markdown: rdiscount
 destination:
 # Outputting
 permalink: /cn/:year/:month/:day/:title.html
