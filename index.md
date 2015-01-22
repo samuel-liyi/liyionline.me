@@ -2,7 +2,7 @@
 layout: home
 ---
 
-欢迎来到我的个人网站，我是一名数据分析师，懂一点CS,懂一点统计，但又都算不上精通，喜欢折腾，热爱开源软件，也经常混迹于[Github](https://github.com/samuel-liyi),喜欢接触各种新鲜的编程语言，最欣赏和用的最多的是Python,R,Javascript,略懂一点C++,Haskell,工作中偶尔会用到VBA.
+欢迎来到我的个人网站，我是一名数据分析师，懂一点CS,懂一点统计，但又都算不上精通，喜欢折腾，热爱开源软件，也经常混迹于[Github](https://github.com/samuel-liyi),喜欢接触各种新鲜的事物，最欣赏和用的最多的是Python,R,Javascript,略懂一点C++,Haskell,工作中偶尔会用到VBA.
 
 我非常喜欢接触和解决各种各样的新鲜问题，我很喜欢的一句话是:
 
