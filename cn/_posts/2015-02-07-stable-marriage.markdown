@@ -18,7 +18,7 @@ tags: [algorithm,economics]
 
 # 算法
 
-[Gale-Shapley] 算法是针对n男n女完全偏好时候的一种算法，保证可以得到一个稳定解，其具体内容如下：
+*Gale-Shapley* 算法是针对n男n女完全偏好时候的一种算法，保证可以得到一个稳定解，其具体内容如下：
 
 * 首先每个男生向自己最偏好的女生发出请求，而每个女生会在自己接到的所有请求里面取最好的一个，拒绝其他的
 
@@ -116,7 +116,6 @@ tags: [algorithm,economics]
 是不是有些神奇，其实如果接触过博弈论的话就不难理解，在一个博弈中，每个人的策略都是对方策略的函数，有时候会有类似囚徒困境的情形出现，你不一定会去采取某个行动，但是你只要有这个能力，就会影响对方的决策，进而影响最终的均衡，而在这样的均衡下你可能情况更差，反而是如果隐藏自己的一些信息,可能得到的结果会更好，这大概就是我们常说的大智若愚吧
 
 [stable-marriage]: http://en.wikipedia.org/wiki/Stable_marriage_problem
-[Gale-Shapley]:
 [defered-algo]:http://www.math.harvard.edu/~eriehl/pechakucha.pdf
 [upper-bound]:http://cstheory.stackexchange.com/questions/5619/what-is-the-maximum-number-of-stable-marriages-for-an-instance-of-the-stable-mar
 [another-algo]:https://gist.github.com/samuel-liyi/1dba2d9b779d15e55e55
