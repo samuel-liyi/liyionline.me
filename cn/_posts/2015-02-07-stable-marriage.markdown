@@ -39,6 +39,7 @@ tags: [algorithm,economics]
 
 稳定的解有很多，不同的解表现出来的结果也不尽相同，比如上面的算法，得到的结果就是男生更被偏爱，在上面的算法稍微做一点改动，我的[R代码][another-algo]主要是用之前在网上找到的一段代码做了几处修改得到的：
 
+```r
 	# modify original implementation to support
 	# 0 in suitor(reviewer)'s preference matrix to support the suitor to remain single, note that a suitor(reviewer)'s preference must end with consecutive zeros if at all
 	daa<-function(nMen,nWomen,m.prefs=NULL,w.prefs=NULL){
@@ -92,7 +93,7 @@ tags: [algorithm,economics]
 	    }
 	  return(list(m.prefs=m.prefs,w.prefs=w.prefs,iterations=iter,matches=w.hist,match.mat=current.match,singles=m.singles))
 	}
-
+```
 
 相比于原来的代码，主要改进了一下，支持偏好矩阵中用0来代表一个人当前面的偏好都得不到满足的时候会选择保持单身，这样经过最多n轮之后，这个人将依旧保持单身，可以尝试几个例子：
 
@@ -106,10 +107,10 @@ tags: [algorithm,economics]
 所以最后的结果是(1,1),(2,2),(3,3)
 
 那么女生有没有办法在这个规则下影响结果，改变弱势的情况呢，其实是有的，那就是隐藏自己的偏好，只给出自己的第一偏好，剩下的置为0
-
+```r
 	w.prefs=matrix(c(2,0,0,3,0,0,1,0,0),nrow=3)
 	daa(3,3,m.prefs,w.prefs)
-
+```
 
 此时得到的结果为：(1,2),(2,3),(3,1)
 
