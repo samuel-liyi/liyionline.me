@@ -17,7 +17,8 @@ defaults:
 
 # Build settings
 #markdown: kramdown
-markdown: rdiscount
+# Build settings
+markdown: kramdown
 # Outputting
 permalink: /:categories/:year/:month/:day/:title.html
 
