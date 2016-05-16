@@ -2,9 +2,9 @@
 layout: home
 ---
 
-欢迎来到我的个人网站，我是一名数据分析师，懂一点CS,懂一点统计，但又都算不上精通，喜欢折腾，热爱开源软件，也经常混迹于[Github](https://github.com/samuel-liyi),喜欢接触各种新鲜的事物，最欣赏和用的最多的是Python,R,Javascript,略懂一点C++,Haskell,工作中偶尔会用到VBA.
+欢迎来到我的个人网站，我是一名数据分析师，懂一点CS,懂一点统计，但又都算不上精通，喜欢折腾，热爱开源软件，也经常混迹于[Github](https://github.com/samuel-liyi),喜欢接触各种新鲜的事物，最欣赏和用的最多的是Python和R,C++属于一直尝试学习一直没有太学会
 
-我非常喜欢接触和解决各种各样的新鲜问题，我很喜欢的一句话是:
+我非常喜欢接触和解决各种各样的新鲜问题，特别是能通过数据和技术方法来解决现实中的问题，我很喜欢的一句话是:
 
 > a perfect formulation of a problem is already half its solution
 
