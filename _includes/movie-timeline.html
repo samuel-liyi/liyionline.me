@@ -15,7 +15,7 @@
 </head>
 <body>
 <div>
-<p> this is a simple demo of time-line visualization, the full code is on <a href="https://github.com/samuel-liyi/movie-timeline">github </a></p>
+<p> this is a simple demo of time-line visualization, the full code is on <a href="https://github.com/samuel-liyi/movie-timeline">github </a>,you can search any keywords(比如 "孙红雷") </p>
 <input type="text" id="q" value="">
 <input type="button" id="btn" value="Search">
 <p id="msg"></p>
@@ -46,9 +46,8 @@
    //how many times the movie api has been called,since we add one script tag each time,we may need to delete those tags in case too many tags inserted,currently delete manually when cnt>=5,detail in btn.onClick
   var apicnt=0;
   var rawdata
-  var dataset=[];
   vs=function(data){
-      rawdata=data
+      var dataset=[];
       container = document.getElementById('visualization');
       container.innerHTML='';
       
