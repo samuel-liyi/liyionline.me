@@ -1,0 +1,114 @@
+{% raw %}
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Movie Timeline| Basic demo</title>
+  <style type="text/css">
+    body, html {
+      font-family: sans-serif;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div>
+<p> this is a simple demo of time-line visualization, the full code is on <a href="https://github.com/samuel-liyi/movie-timeline">github </a></p>
+<input type="text" id="q" value="">
+<input type="button" id="btn" value="Search">
+<p id="msg"></p>
+</div>
+<script id="item-template" type="text/x-handlebars-template">
+    <table class="detail">
+      <tr>
+        <td colspan="2" class="description">{{description}}</td>
+      </tr>
+      <tr>
+        <td>{{genres}}</td>
+        <td>{{casts}}</td>
+      </tr>
+      <tr>
+        <td colspan="2"><a href="{{movieUrl}}" target="_blank"><img src="{{imgUrl}}" width="80" height="60"></a></td>
+      </tr>
+    </table>
+</script>
+
+<div id="visualization"></div>
+
+<script type="text/javascript">
+  // DOM element where the Timeline will be attached
+  var container,dataset,items,timeline
+  // create a handlebars template
+  var source   = document.getElementById('item-template').innerHTML;
+  var template = Handlebars.compile(document.getElementById('item-template').innerHTML);
+   //how many times the movie api has been called,since we add one script tag each time,we may need to delete those tags in case too many tags inserted,currently delete manually when cnt>=5,detail in btn.onClick
+  var apicnt=0;
+  var rawdata
+  var dataset=[];
+  vs=function(data){
+      rawdata=data
+      container = document.getElementById('visualization');
+      container.innerHTML='';
+      
+      cnt=0;
+      $.each(data.subjects,function(index,value){
+        dataset.push(
+          {id:++cnt
+          ,content:value.title
+          ,start:value.year+"-01-01"
+          ,genres:value.genres.join(',')
+          ,description:value.title
+          ,imgUrl:value.images.medium
+          ,movieUrl:value.alt
+        }
+          )
+      });
+      items = new vis.DataSet(
+        dataset
+          );
+      // Configuration for the Timeline
+      var options = {
+        template: template,
+        width: '100%',
+        height: '600px',
+        autoResize:true
+      };      
+      // Create a Timeline
+      timeline = new vis.Timeline(container, items, options);
+  };  
+
+  window.onload=function(){
+    var oQ=document.getElementById('q');
+    var oBtn=document.getElementById('btn');
+    var oMsg=document.getElementById('msg');
+    oBtn.onclick=function(){
+      if(oQ.value!=''){
+        var oScript=document.createElement('script');
+        oScript.src='https://api.douban.com/v2/movie/search?q='+oQ.value+'&alt=xd&callback=vs';
+        oScript.class="jsonp";
+        apicnt++;
+        console.log(apicnt);
+
+        //remove previouly added jsonp tag  
+        if(apicnt>=5){
+          var tags = $('script');
+          r=new RegExp("https://api.douban.com/*")
+          if(tags.length>0){
+          $.each(tags,function(index,value){
+            if(value.src.match(r)){
+              value.parentNode.removeChild(value)
+            }})
+        }
+          apicnt=0;
+      }
+      document.body.appendChild(oScript);   
+
+      }
+    };
+  }
+</script>
+</body>
+</html>
+{% endraw %}
